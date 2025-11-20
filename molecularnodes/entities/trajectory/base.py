@@ -206,6 +206,21 @@ class Trajectory(MolecularEntity):
         if self.universe.trajectory.frame != value:
             self.universe.trajectory[value]
 
+    @property
+    def _scaled_periodic_box(self) -> np.ndarray:
+        """Get the periodic box dimensions from the trajectory.
+
+        Returns
+        -------
+        np.ndarray
+            The periodic box dimensions (lengths and angles) or None if not available.
+        """
+        if self.universe.trajectory.dimensions is not None:
+            lengths = self.universe.trajectory.dimensions[0:3] * self.world_scale
+            angles = self.universe.trajectory.dimensions[3:6]
+            return np.concatenate([lengths, angles])
+        return np.zeros(6)
+
     @functools.cached_property
     def _elements(self) -> np.ndarray:
         """

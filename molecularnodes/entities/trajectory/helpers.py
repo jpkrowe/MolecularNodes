@@ -292,6 +292,22 @@ class FrameManager:
 
         return np.mean(array, axis=0)
 
+    def get_box_dimensions_at_frame(self, frame: int) -> np.ndarray:
+        """Get periodic box dimensions at a specific frame.
+
+        Parameters
+        ----------
+        frame : int
+            Universe frame number
+
+        Returns
+        -------
+        np.ndarray
+            Scaled box dimensions
+        """
+        self.trajectory.uframe = frame
+        return self.trajectory._scaled_periodic_box
+
     def get_positions_at_frame(self, frame: int) -> np.ndarray:
         """Get positions for a given frame with all processing applied.
 
