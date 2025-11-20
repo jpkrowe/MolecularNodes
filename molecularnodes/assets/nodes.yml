@@ -878,6 +878,10 @@ ensemble:
       Move an instanced assembly to the world origin. Some structures are not centred on the world origin, so this node
       can reset them to the world origin for convenient rotation and translation and animation.
     videos: https://imgur.com/pgFTmgC
+  - label: Periodic Box
+    name: Periodic Box
+    description: >-
+      Get the periodic box dimensions from the trajectory, if available
   - label: Instance
     name: Ensemble Instance
     description: >-
